@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filter - Email Filter</title>
+    <link rel="shortcut icon" type="image/png" href="icons/favicon.png">
+    <link rel="stylesheet" href="style/filter.css">
+    <link href="https://fonts.googleapis.com/css?family=Helvetica+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery.numberedtextarea.js"></script>
+    <script src="js/filter.js"></script>
+</head>
+<body>
+    <img src="images/background.jpg" id="background">
+    <div id="fond"></div>
+    <div id="social_media">
+        <img src="images/XENOM.jpg" title="Xenom Code" id="xenom">
+        <a href="https://www.facebook.com/otaku.sekai.16" target="_blank" id="facebook"><img src="icons/facebook.png"></a>
+        <a href="https://www.instagram.com/otaku__sekai__" target="_blank" id="instagram"><img src="icons/instagram.png"></a>
+        <a href="https://www.youtube.com/channel/UCuHcCIFnT9n4lNTOYgLriXQ" target="_blank" id="youtube"><img src="icons/youtube.png"></a>
+        <a href="https://github.com/xenom-code" target="_blank" id="github"><img src="icons/github.png"></a>
+    </div>
+    <div id="fond2">
+        <div id="about_coder">
+            <h3><img src="icons/about.png" id="about"> About Coder</h3>
+            <p><strong>👑 Email FIlter By Domain v1.0 👑</strong><br> Coded By <strong>XENOM CODE</strong> From <strong>Algeria</strong> 💪🏻</p>
+            <img src="images/Animated-Flag-Algeria.gif" id="Dz">
+            <p>Suggest Me Some Amelioration In DM !</p>
+        </div>
+    </div>
+    <img src="images/xenom-code.png" title="Author" id="xenom-code">
+    <div id="container">
+        <div id="organizor">
+            <div id="center">
+                <div id="filter">
+                    <div>
+                        <table>
+                            <tr>
+                                <td style="text-align: left;">
+                                    <h3>Emails : <span id="sizeAll">0</span></h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea id="EmailList" rows="20" cols="35" placeholder="ENTER EMAILS LIKE THIS ...&#10;&#10;example@email.com&#10;example@email.com"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    OR <label for="txtFile" id="uplaodBtn"></label>
+                                    <input type="file" id="txtFile">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div>
+                        <h3>Domains : <span id="sizeDomains">14</span></h3>
+                        <input type="checkbox" name="enableDomain" id="gmailCbx" checked><label for="gmailCbx">Gmail</label><br>
+                        <input type="checkbox" name="enableDomain" id="yahooCbx" checked><label for="yahooCbx">Yahoo</label><br>
+                        <input type="checkbox" name="enableDomain" id="hotmailCbx" checked><label for="hotmailCbx">Hotmail</label><br>
+                        <input type="checkbox" name="enableDomain" id="outlookCbx" checked><label for="outlookCbx">Outlook</label><br>
+                        <input type="checkbox" name="enableDomain" id="iCloudCbx" checked><label for="iCloudCbx">iCloud</label><br>
+                        <input type="checkbox" name="enableDomain" id="mailCbx" checked><label for="mailCbx">Mail</label><br>
+                        <input type="checkbox" name="enableDomain" id="aolCbx" checked><label for="aolCbx">Aol</label><br>
+                        <input type="checkbox" name="enableDomain" id="seznamCbx" checked><label for="seznamCbx">Seznam</label><br>
+                        <input type="checkbox" name="enableDomain" id="yandexCbx" checked><label for="yandexCbx">Yandex</label><br>
+                        <input type="checkbox" name="enableDomain" id="comcastCbx" checked><label for="comcastCbx">Comcast</label><br>
+                        <input type="checkbox" name="enableDomain" id="attCbx" checked><label for="attCbx">Att</label><br>
+                        <input type="checkbox" name="enableDomain" id="protonmailCbx" checked><label for="protonmailCbx">Protonmail</label><br>
+                        <input type="checkbox" name="enableDomain" id="msnCbx" checked><label for="msnCbx">MSN</label><br>
+                        <input type="checkbox" name="enableDomain" id="wanadooCbx" checked><label for="wanadooCbx">Wanadoo</label><br>
+                    </div>
+                </div>
+                <div id="dashboard">
+                    <h3>Dashboard</h3>
+                    <button onclick="filter()" id="filterBtn"><i class="fas fa-play"></i>Filter</button>
+                    <button onclick="document.querySelector('textarea').value = ''; document.getElementById('sizeAll').innerHTML = '0'; document.getElementById('status').innerHTML = 'Waiting For Emails...'; document.getElementById('status').style.color = 'black';" id="clearBtn"><i class="fas fa-trash-alt"></i>Clear</button>
+                    <h4>Status : <span id="status">Waiting For Emails...</span></h4>
+                </div>
+            </div>
+        </div>
+        <div id="results">
+            <center>
+                <h1>Result : Filtered <span id="filtered"></span> | Not Filtered <span id="notFiltered"></span><br>
+                    <button id="saving_filtered_btn" onclick="SaveFiltered()"><i class="fas fa-download"></i>Save Filtered &#x2714;</button>
+                    <button id="saving_not_filtered_btn" onclick="SaveNotFiltered()"><i class="fas fa-download"></i>Save Not Filtered &#x2718;</button>
+                    <button id="saving_all_btn" onclick="SaveAll()"><i class="fas fa-download"></i>Save All<i class="fas fa-tasks"></i></button>
+                </h1>
+            </center>
+            <div id="boxes">
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/gmail.png" class="domainIcon"> Gmail : <span id="sizeGmail">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@gmail" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@gmail')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@gmail')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/yahoo.png" class="domainIcon"> Yahoo : <span id="sizeYahoo">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@yahoo" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@yahoo')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@yahoo')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/hotmail.png" class="domainIcon"> Hotmail : <span id="sizeHotmail">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@hotmail" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@hotmail')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@hotmail')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>  
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/outlook.png" class="domainIcon"> Outlook : <span id="sizeOutlook">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@outlook" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@outlook')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@outlook')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/icloud.png" class="domainIcon"> iCloud : <span id="sizeiCloud">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@icloud" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@icloud')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@icloud')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/mail.png" class="domainIcon"> Mail : <span id="sizeMail">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@mail" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@mail')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@mail')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/aol.png" class="domainIcon"> AOL : <span id="sizeAol">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@aol" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@aol')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@aol')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/seznam.png" class="domainIcon"> Seznam  <span id="sizeSeznam">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@seznam" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@seznam')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@seznam')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/yandex.png" class="domainIcon"> Yandex : <span id="sizeYandex">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@yandex" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@yandex')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@yandex')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/comcast.png" class="domainIcon"> Comcast : <span id="sizeComcast">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@comcast" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@comcast')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@comcast')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>  
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/att.png" class="domainIcon"> Att : <span id="sizeAtt">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@att" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@att')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@att')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/protonmail.png" class="domainIcon"> Protonmail : <span id="sizeProtonmail">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@protonmail" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@protonmail')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@protonmail')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/msn.png" class="domainIcon"> MSN : <span id="sizeMsn">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@msn" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@msn')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@msn')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="images/domains/wanadoo.png" class="domainIcon"> Wanadoo : <span id="sizeWanadoo">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@wanadoo" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@wanadoo')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@wanadoo')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="box">
+                    <table>
+                        <tr>
+                            <td>
+                                Others : <span id="sizeOthers">0</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="@others" class="FilteredEmail"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="copy_btn" onclick="Copy('@others')"><i class="fas fa-copy"></i>Copy</button>
+                                <button class="save_btn" onclick="Save('@others')"><i class="fas fa-save"></i>Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

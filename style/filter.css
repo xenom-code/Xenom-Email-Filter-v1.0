@@ -1,0 +1,262 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #fff;
+}
+
+#background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+#xenom{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#xenom-code{
+    width: 250px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#social_media{
+    height: 70px;
+    width: 70px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+#fond, #fond2{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+}
+
+#about_coder{
+    width: 400px;
+    height: 400px;
+    background: #fff;
+    border-radius: 20px;
+    color: #000;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+#about{
+    position: relative;
+    top: 10px;
+}
+
+#about{
+    width: 40px;
+}
+
+a img{
+    width: 40px;
+    border-radius: 50%;
+}
+
+a{
+    cursor: pointer;
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    transition: all ease-in .2s;
+}
+
+/*#facebook{
+    top: 10px;
+    left: 130px;
+}
+
+#instagram{
+    top: 70px;
+    left: 110px;
+}
+
+#youtube{
+    top: 110px;
+    left: 65px;
+}
+
+#github{
+    top: 130px;
+    left: 10px;
+}*/
+
+#center{
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    width: 700px;
+}
+
+#organizor{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dashboard{
+    margin-top: 5px;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #000;
+    line-height: 1px;
+}
+
+#filter{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px;
+    padding: 0px 30px;
+}
+
+@media only screen and (max-width: 543px){
+    #filter{
+        grid-template-columns: 1fr;
+    }
+}
+
+#boxes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 942px){
+    #boxes{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 643px){
+    #boxes{
+        grid-template-columns: 1fr;
+    }
+}
+
+#box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#box table{
+    border-collapse: collapse;
+    margin: 20px 0px;
+}
+
+td{
+    text-align: center;
+}
+
+i{
+    padding-right: 5px;
+}
+
+.fa-arrow-circle-right, .fa-tasks{
+    padding-right: 0px;
+    padding-left: 5px;
+}
+
+.FilteredEmail{
+    padding: 20px;
+    height: 200px;
+    width: 250px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+textarea{
+	padding: 10px;
+    border: 2px solid #000;
+	font-size: 15px;
+	font-family: monospace;
+	display:block;
+	outline:none;
+}
+
+#filter, #results{
+    background: #fff;
+    color: #000;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px #000;
+}
+
+#results{
+    display: none;
+    padding: 20px 30px;
+    margin-top: 50px;
+}
+
+.domainIcon{
+    width: 20px;
+}
+
+button, #uplaodBtn::before{
+    background-color: #7cd1f9;
+    color: #fff;
+    border: none;
+    box-shadow: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px 24px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button:hover, #uplaodBtn:hover::before{
+    background-color: #78cbf2;
+}
+
+button:focus, #uplaodBtn:active::before{
+    outline: none;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(6, 144, 243, 0.29);
+}
+
+input[type="checkbox"], label{
+    cursor: pointer;
+    outline: none;
+}
+
+#uplaodBtn::-webkit-file-upload-button{
+    visibility: hidden;
+}
+
+#uplaodBtn::before{
+    content: '▲ UPLOAD';
+    display: inline-block;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+}
+
+#txtFile{
+    visibility: hidden;
+}
